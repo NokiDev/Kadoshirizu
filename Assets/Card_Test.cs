@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Card_Test : MonoBehaviour {
 
-    public enum CardElement { WATER, ELECCTRICITY, FIRE, GROUND };
+    public enum CardElement { WATER, ELECTRICITY, FIRE, GROUND, WIND };
 
     private CardElement m_Element;
     private int m_Level;

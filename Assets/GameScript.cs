@@ -3,14 +3,14 @@ using System.Collections;
 
 public class GameScript : MonoBehaviour {
 
-    Player_Test[] m_Players = { null, null };
-    Player_Test m_CurrentTurn;
+    Player[] m_Players = { null, null };
+    Player m_CurrentTurn;
 	// Use this for initialization
 	void Start () {
 	
 	}
 
-    public void NewGame(Player_Test player1, Player_Test player2)
+    public void NewGame(Player player1, Player player2)
     {
         player1.StartGame();
         player2.StartGame();
@@ -31,7 +31,7 @@ public class GameScript : MonoBehaviour {
     public void PlayCard(int index)
     {
         Card_Test cardPlayed = m_CurrentTurn.GetHandCard(index);
-        Player_Test waitingPlayer = (m_CurrentTurn == m_Players[0]) ? m_Players[0] : m_Players[1];
+        Player waitingPlayer = (m_CurrentTurn == m_Players[0]) ? m_Players[0] : m_Players[1];
         waitingPlayer.ComputeDamage(cardPlayed);
         if(waitingPlayer.LifePoints <0)
         {

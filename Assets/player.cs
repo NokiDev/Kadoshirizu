@@ -1,32 +1,106 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using System;
 
-public class player : MonoBehaviour {
-    public int lifePoint;
+public class Player : MonoBehaviour
+{
+    public int lifePoints;
     private int nbDots;
+    List<Card_Test> cards; // Represent the deck of cards
+    Card_Test[] hand = { null, null, null }; // Represent the hand of the player
 
     // Use this for initialization
-    void Start () {
-        this.lifePoint = 5000;
-        this.nbDots = 0;
-        
-    }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Start()
+    {
 
-    void Dots(){
-        nbDots++;
-        if(nbDots == 3){
-            Damage(1000);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+
+    public int LifePoints
+    {
+        get
+        {
+            return lifePoints;
+        }
+
+        set
+        {
+            lifePoints = value;
         }
     }
 
-    void Damage(int damage){
-        this.lifePoint -= damage;
+    public void StartGame()
+    {
+        nbDots = 0;
+        lifePoints = 10000;
+        ShuffleDeck();
+        Draw(3);
+    }
+
+    void Damage(int damage)
+    {
+        this.lifePoints -= damage;
     }
 
 
+
+    public void Win()
+    {
+
+    }
+
+    public void Loose()
+    {
+
+    }
+
+    public void Draw(int number = 1)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            if (cards.Count > 0)
+            {
+                hand[0] = cards[0];
+                cards.RemoveAt(0);
+            }
+        }
+    }
+
+    public Card_Test GetHandCard(int index)
+    {
+        return null;
+    }
+
+    public void ComputeDamage(Card_Test card)
+    {
+
+    }
+
+    
+    public void ShuffleDeck()
+    {
+        RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+        int n = cards.Count;
+        while (n > 1)
+        {
+            byte[] box = new byte[1];
+            do provider.GetBytes(box);
+            while (!(box[0] < n * (Byte.MaxValue / n)));
+            int k = (box[0] % n);
+            n--;
+            Card_Test value = cards[k];
+            cards[k] = cards[n];
+            cards[n] = value;
+        }
+
+
+    }
 }
