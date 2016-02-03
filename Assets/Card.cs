@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 
 public class Card : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class Card : MonoBehaviour
         level = p_level;
     }
 
-    public void Effect(player p)
+    public void Effect(Player p)
     {
         switch (element)
         {
@@ -43,26 +43,29 @@ public class Card : MonoBehaviour
             case CardElement.EARTH:
                 EffectEarth(p);
                 break;
+            default:
+                Console.Error.WriteLine("This card's element does not exist : " + element + " !");
+                break;
         }
     }
 
-    private void EffectWater(player p)
+    private void EffectWater(Player player)
     {
         // Affects the effects of Card Water on the player
     }
-    private void EffectFire(player p)
+    private void EffectFire(Player player)
     {
         // Affects the effects of Card Fire on the player
     }
-    private void EffectWind(player p)
+    private void EffectWind(Player player)
     {
         // Affects the effects of Card Wind on the player
     }
-    private void EffectLightning(player p)
+    private void EffectLightning(Player player)
     {
         // Affects the effects of Card Lightning on the player
     }
-    private void EffectEarth(player p)
+    private void EffectEarth(Player player)
     {
         // Affects the effects of Card Earth on the player
     }
