@@ -30,13 +30,9 @@ public class GameScript : MonoBehaviour {
 
     public void PlayCard(int index)
     {
-<<<<<<< HEAD
-        Card_Test cardPlayed = m_CurrentTurn.GetHandCard(index);
-        Player waitingPlayer = (m_CurrentTurn == m_Players[0]) ? m_Players[0] : m_Players[1];
-=======
         Card cardPlayed = m_CurrentTurn.GetHandCard(index);
-        Player_Test waitingPlayer = (m_CurrentTurn == m_Players[0]) ? m_Players[0] : m_Players[1];
->>>>>>> origin/master
+        Player waitingPlayer = (m_CurrentTurn == m_Players[0]) ? m_Players[0] : m_Players[1];
+
         waitingPlayer.ComputeDamage(cardPlayed);
         if(waitingPlayer.LifePoints <0)
         {

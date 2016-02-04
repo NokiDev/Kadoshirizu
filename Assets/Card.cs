@@ -9,13 +9,10 @@ public class Card : MonoBehaviour
     private CardElement element;
     private int level;
 
-    public CardElement Element {
-        get {
-            return element;
-        }
-        set {
-            element = value;
-        }
+    public CardElement Element
+    {
+        get { return element; }
+        set { element = value; }
     }
 
     public Card(CardElement p_element, int p_level)

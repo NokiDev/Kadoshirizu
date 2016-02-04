@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
 {
     public int lifePoints;
     private int nbDots;
-    List<Card_Test> cards; // Represent the deck of cards
-    Card_Test[] hand = { null, null, null }; // Represent the hand of the player
+    List<Card> cards; // Represent the deck of cards
+    Card[] hand = { null, null, null }; // Represent the hand of the player
 
     // Use this for initialization
     void Start()
@@ -74,12 +74,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public Card_Test GetHandCard(int index)
+    public Card GetHandCard(int index)
     {
         return null;
     }
 
-    public void ComputeDamage(Card_Test card)
+    public void ComputeDamage(Card card)
     {
 
     }
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
             while (!(box[0] < n * (Byte.MaxValue / n)));
             int k = (box[0] % n);
             n--;
-            Card_Test value = cards[k];
+            Card value = cards[k];
             cards[k] = cards[n];
             cards[n] = value;
         }
