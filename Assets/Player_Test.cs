@@ -63,12 +63,12 @@ public class Player_Test : MonoBehaviour {
         }
     }
 
-    public Card_Test GetHandCard(int index)
+    public Card GetHandCard(int index)
     {
         return null;
     }
 
-    public void ComputeDamage(Card_Test card)
+    public void ComputeDamage(Card card)
     {
 
     }
