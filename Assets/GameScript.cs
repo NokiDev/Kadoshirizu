@@ -22,10 +22,7 @@ public class GameScript : MonoBehaviour {
 
     public void NextTurn()
     {
-        if (m_CurrentTurn == m_Players[0])
-            m_CurrentTurn = m_Players[1];
-        else
-            m_CurrentTurn = (m_CurrentTurn == m_Players[0]) ? m_Players[1] : m_Players[0];
+        m_CurrentTurn = (m_CurrentTurn == m_Players[0]) ? m_Players[1] : m_Players[0];
     }
 
     public void PlayCard(int index)

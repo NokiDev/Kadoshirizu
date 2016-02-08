@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
 
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -27,14 +29,10 @@ public class Player : MonoBehaviour
     public int LifePoints
     {
         get
-        {
-            return lifePoints;
-        }
+        { return lifePoints; }
 
         set
-        {
-            lifePoints = value;
-        }
+        { lifePoints = value; }
     }
 
     public void StartGame()
@@ -100,7 +98,74 @@ public class Player : MonoBehaviour
             cards[k] = cards[n];
             cards[n] = value;
         }
+    }
 
 
+    public void Effect(Card card)
+    {
+        switch (card.Element)
+        {
+            case Card.CardElement.WATER:
+                // Affects the effects of Card Water on the player
+                BlockFireSpellForMultipleRound(card.Level);
+                break;
+            case Card.CardElement.FIRE:
+                // Affects the effects of Card Fire on the player
+                DamageForMultipleRound(100, card.Level);
+                break;
+            case Card.CardElement.WIND:
+                // Affects the effects of Card Wind on the player
+                ReturnSpell(0.25 * card.Level);
+                break;
+            case Card.CardElement.LIGHTNING:
+                // Affects the effects of Card Lightning on the player
+                Stun(0.25 * (Math.Pow(2, card.Level - 1)));
+                break;
+            case Card.CardElement.EARTH:
+                // Affects the effects of Card Earth on the player
+                int damages = 0;
+                switch (card.Level)
+                {
+                    case 1:
+                        damages = 100;
+                        break;
+                    case 2:
+                        damages = 250;
+                        break;
+                    case 3:
+                        damages = 500;
+                        break;
+                    default:
+                        Console.Error.WriteLine("This card's level does not exist : " + card.Level + " !");
+                        break;
+
+                }
+                if (damages != 0)
+                {
+                    DamageForMultipleRound(damages, 1);
+                }
+                break;
+            default:
+                Console.Error.WriteLine("This card's element does not exist : " + card.Element + " !");
+                break;
+        }
+    }
+
+    // Methodes utilisées par les effets des cartes
+    public void BlockFireSpellForMultipleRound(int nbRounds)
+    {
+
+    }
+    public void DamageForMultipleRound(int damages, int nbRounds)
+    {
+
+    }
+    public void ReturnSpell(double percent)
+    {
+
+    }
+    public void Stun(double percent)
+    {
+        
     }
 }
